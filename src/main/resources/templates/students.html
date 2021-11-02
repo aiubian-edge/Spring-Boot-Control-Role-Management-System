@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Role Management System</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+	<table width="100%">
+		<tr>
+			<td align="center">
+				<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+					<!-- Brand -->
+					<a class="navbar-brand" href="#">Role Management System</a>
+
+					<!-- Toggler/collapsibe Button -->
+					<button class="navbar-toggler" type="button" data-toggle="collapse"
+						data-target="#collapsibleNavbar">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<!-- Navbar links -->
+					<!--	<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/students}">Admin Management</a>
+				</li>
+				<li class="nav-item">
+				 <a class="nav-link" th:href="@{/students}">Teacher Management</a>
+				</li>
+			</ul>
+		</div> -->
+				</nav>
+			</td>
+		<tr>
+	</table>
+
+
+
+	<table width="100%">
+		<tr width="100%">
+			<td width="100%">
+				<div class="container" align="left">
+					<div class="row">
+						<h1> Role List </h1>
+					</div>
+			</td>
+			<td width="100%">
+				<right>
+					<div class="row" align="right">
+						<div class="col-lg-3" align="right">
+							<a th:href="@{/students/new}" class="btn btn-primary btn-sm mb-3" align="right"> New
+								Role</a>
+						</div>
+					</div>
+				</right>
+			</td>
+		</tr>
+	</table>
+
+
+	<table class="table table-striped table-bordered" align="center">
+		<thead class="table-dark">
+			<tr align="center">
+				<th> Role ID</th>
+				<th> First Name</th>
+				<th> Last Name</th>
+				<th> Email </th>
+				<!--		<th> Role Status </th> -->
+				<th> Actions </th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr th:each="student: ${students}" align="center">
+				<td th:text="${student.id}"></td>
+				<td th:text="${student.firstName}"></td>
+				<td th:text="${student.lastName}"></td>
+				<td th:text="${student.email}"></td>
+				<!--	<td th:text="${student.role_status}"></td> -->
+				<td>
+					<a th:href="@{/students/edit/{id}(id=${student.id})}" class="btn btn-primary">Update</a>
+
+					<a th:href="@{/students/{id}(id=${student.id})}" class="btn btn-danger">Delete</a>
+
+				</td>
+			</tr>
+		</tbody>
+
+	</table>
+
+	</div>
+</body>
+
+</html>
